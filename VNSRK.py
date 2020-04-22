@@ -18,7 +18,9 @@ class Fan:
 class Wire:
 	def __init__(self, source, dest):
 		self.src = source
-		self.dest = dest)
+		self.dest = dest
+		self.v = 0
+
 def enc(key, data):
 	cipher = AES.new(key, AES.MODE_EAX)
 	ciphertext, tag = cipher.encrypt_and_digest(data)
