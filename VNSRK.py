@@ -58,7 +58,7 @@ def share(out):
 			gate.out1.v = 0
 			gate.out1.v = 0
 
-reconstruct(inputs,publish):
+def reconstruct(inputs,publish):
 	queue = []
 	for w in inputs:
 		queue.append(w.dest)
