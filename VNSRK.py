@@ -22,13 +22,13 @@ class Wire:
 		self.v = 0
 
 def enc(key, data):
-	cipher = AES.new(key, AES.MODE_EAX)
-	ciphertext, tag = cipher.encrypt_and_digest(data)
-	return {"ciphertext" : ciphertext, "tag" : tag, "nonce" : cipher.nonce}
+	cipher = AES.new(key, AES.MODE_CTR)
+	ciphertext = cipher.encrypt(data)
+	return {"ciphertext" : ciphertext, "nonce" : cipher.nonce}
 
 def dec(key, digest):
-	cipher = AES.new(key, AES.MODE_EAX, digest["nonce"])
-	data = cipher.decrypt_and_verify(digest["ciphertext"],digest["tag"])
+	cipher = AES.new(key, AES.MODE_CTR, digest["nonce"])
+	data = cipher.decrypt(digest["ciphertext"])
 
 def share(out):
 	queue = []
