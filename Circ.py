@@ -31,9 +31,9 @@ def build(circuit)
 			out.src = gate
 		elif id % 2 ==0 and id > 2:
 			gate = dict[id]
-			in = new Wire(0,gate)
+			in1 = new Wire(0,gate)
 			gate.out2 = out
-			gate.in = in
-			stack.append(in)
+			gate.inFan = in1
+			stack.append(in1)
 			out.src = gate
 			
