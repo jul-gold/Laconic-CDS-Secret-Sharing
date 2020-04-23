@@ -13,6 +13,7 @@ def build(circuit)
 			in2.dest = gate
 			stack.append(in2)
 			stack.append(in1)
+			out.src  =gate
 		elif id == 2:
 			in1 = new Wire(0,0)
                         in2 = new Wire(0,0)
@@ -21,15 +22,18 @@ def build(circuit)
                         in2.dest = gate
                         stack.append(in2)
                         stack.append(in1)
+			out.src = gate
 		elif id == 0:
-			pass
+			out.src = gate
 		elif id % 2 == 1 and id > 2:
-			dict[id+1] = new Fan(0,out,0)
+			gate = new Fan(0,out,0)
+			dict[id+1] = gate
+			out.src = gate
 		elif id % 2 ==0 and id > 2:
 			gate = dict[id]
 			in = new Wire(0,gate)
 			gate.out2 = out
 			gate.in = in
 			stack.append(in)
-			
+			out.src = gate
 			
