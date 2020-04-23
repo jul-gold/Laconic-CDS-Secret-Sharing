@@ -30,5 +30,6 @@ def build(circuit)
 			in = new Wire(0,gate)
 			gate.out2 = out
 			gate.in = in
+			stack.append(in)
 			
 			
