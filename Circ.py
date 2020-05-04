@@ -8,7 +8,8 @@ def build(circuit):
     inputs = []
     stack = [secret]
     fans = {}
-    for i in circuit:
+    circ = circuit.split(",")
+    for i in circ:
         out = stack.pop()
         id = int(i)
         if id == 1:
